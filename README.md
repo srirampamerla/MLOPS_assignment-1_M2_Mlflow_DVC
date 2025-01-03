@@ -1,5 +1,6 @@
 # MLFLOW
 **Implementation Steps**
+
 **1. Experiment Tracking with MLflow**
 
 Step 1: Set Up MLflow & Install
@@ -104,6 +105,112 @@ Select multiple runs for comparison.
 Visualize metrics and parameters to identify trends and performance differences.
 
 Use artifacts to retrieve and deploy models.
+
+#DVC
+
+1. Setup DVC and Git
+2. 
+Install DVC in your environment:
+
+```
+pip install dvc
+```
+Initialize Git Repository
+
+```
+git init
+```
+Initialize DVC
+```
+dvc init
+```
+This creates a .dvc/ directory containing configuration files for DVC.
+
+Adds .dvcignore to specify files or directories that DVC should not track.
+
+Use Git to track these initial files:
+
+```
+git add .dvc .dvcignore
+git commit -m "Initialize DVC"
+```
+2. Track Data Files with DVC
+
+To start tracking a data file (e.g., data/data.csv):
+```
+dvc add data/data.csv
+```
+This creates:
+
+data.csv.dvc: A metafile with a hash key and metadata for data.csv.
+
+Adds the path of data.csv to .gitignore.
+
+Use Git to Track DVC Metadata
+```
+git add data/data.csv.dvc data/.gitignore
+git commit -m "Track data file with DVC"
+```
+3. Manage Updates to Data Files
+
+If you modify data.csv, run:
+```
+dvc add data/data.csv
+```
+This updates the hash key in data.csv.dvc.
+
+Use Git to track the changes:
+
+```
+git add data/data.csv.dvc
+git commit -m "Update data file"
+```
+
+4. Switch Between Data Versions
+
+To move between versions:
+
+Use Git to checkout a specific commit:
+```
+git checkout <commit-id>
+```
+
+Update the working data file to match the DVC version:
+
+```
+dvc checkout
+```
+
+This ensures data/data.csv reflects the version specified in data.csv.dvc.
+
+Return to the Latest Version
+
+Switch back to the main branch:
+```
+git checkout main
+dvc checkout
+```
+
+5. Check Logs and Branches
+
+Use git log to view the history of changes.
+
+Create branches to manage different versions of your project:
+
+```
+git branch <branch-name>
+```
+
+6. DVC Cache and Optimization
+
+DVC stores the actual file content in .dvc/cache/ with hash keys based on file content.
+
+If two versions of a file share the same content, DVC efficiently stores it once.
+
+
+
+
+
 
 
 
