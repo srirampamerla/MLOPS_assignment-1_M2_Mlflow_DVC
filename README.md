@@ -108,8 +108,10 @@ Use artifacts to retrieve and deploy models.
 
 # DVC
 
+DVC (Data Version Control) is an open-source version control system designed to manage and track large datasets and machine learning models, making it easier to handle the data-centric aspects of machine learning projects.
+
 1. Setup DVC and Git
-2. 
+
 Install DVC in your environment:
 
 ```
